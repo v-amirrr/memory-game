@@ -1,0 +1,80 @@
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: .8rem;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    cursor: pointer;
+    border: solid 2px #00000000;
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+}
+
+.card:hover, .card:active, .card:focus {
+    border: solid 2px #7f7f7f8c;
+}
+
+.cardFront, .cardFrontFlipped, .cardBack, .cardBackFlipped {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+}
+
+.cardFront {
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+}
+
+.cardFrontFlipped {
+    transform: rotateY(90deg);
+    -webkit-transform: rotateY(90deg);
+    -moz-transform: rotateY(90deg);
+    -ms-transform: rotateY(90deg);
+    -o-transform: rotateY(90deg);
+}
+
+.cardBack{
+    position: absolute;
+    z-index: -1;
+    transform: rotateY(90deg);
+    -webkit-transform: rotateY(90deg);
+    -moz-transform: rotateY(90deg);
+    -ms-transform: rotateY(90deg);
+    -o-transform: rotateY(90deg);
+}
+
+.cardBackFlipped {
+    z-index: -1;
+    position: absolute;
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+}
+
+@media (max-width: 700px) {
+    .cardFront, .cardFrontFlipped, .cardBack, .cardBackFlipped {
+        width: 8rem;
+        height: 8rem;
+    }
+}
