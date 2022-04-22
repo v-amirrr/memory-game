@@ -16,7 +16,7 @@
 }
 
 .header h1 {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-size: 3rem;
     white-space: nowrap;
 }
@@ -61,8 +61,11 @@ p {
 }
 
 @media (max-width: 700px) {
+    .gamePage {
+        justify-content: space-around;
+    }
+
     .cards {
-        display: grid;
         grid-template-columns: repeat(3, 1fr);
     }
 }

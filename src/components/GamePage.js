@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styles from "./GamePage.module.css";
 
 import Card from './Card';
+import Footer from './Footer';
 
 const cardImages = [
     { "src": "/img/helmet-1.png", matched: false },
@@ -73,6 +74,7 @@ const GamePage = () => {
                 <div className={styles.header}>
                     <h1>Memory Game</h1>
                     <button onClick={shuffleCards}>New Game</button>
+                    <p>Turns: {turns}</p>
                 </div>
 
                 <div className={styles.cards}>
@@ -85,8 +87,8 @@ const GamePage = () => {
                             disabled={disabled}
                         />)}
                 </div>
-
-                <p>Turns: {turns}</p>
+                
+                <Footer />
             </div>
         </>
     );
