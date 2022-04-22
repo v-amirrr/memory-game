@@ -15,4 +15,4 @@ If you have any feedback, please reach out to us at amirrr.valizadeh@gmail.com
 
 You can see this project in live: https://memorygamewithreact.netlify.app/
 
-![ogImage](https://user-images.githubusercontent.com/79039612/163527501-31fc2cbf-5516-4e93-842c-c3c8108a879d.png)
+![image](https://user-images.githubusercontent.com/79039612/164623234-85c64179-bb0b-41e2-b7e0-7340b38d6543.png)
