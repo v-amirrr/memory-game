@@ -12,18 +12,21 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 2rem;
 }
 
 .header h1 {
-    margin-bottom: 1rem;
-    font-size: 3rem;
+    margin: 1rem;
+    font-size: 2.5rem;
     white-space: nowrap;
+    text-transform: uppercase;
+    user-select: text;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .header button {
     border: solid 1px #ffffff24;
     font-size: 2rem;
+    font-weight: 600;
     padding: 1rem;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -31,23 +34,19 @@
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     cursor: pointer;
-    background-color: #000000;
-    color: #fff;
+    background-color: #00000000;
+    color: #ddd;
     letter-spacing: -2px;
-    transition: all .2s;
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    -ms-transition: all .2s;
-    -o-transition: all .2s;
+    transition: background-color .2s, border .2s;
+    -webkit-transition: background-color .2s, border .2s;
+    -moz-transition: background-color .2s, border .2s;
+    -ms-transition: background-color .2s, border .2s;
+    -o-transition: background-color .2s, border .2s;
 }
 
 .gamePage button:hover {
     background-color: #171717;
     border: solid 1px #ffffff00;
-}
-
-.gamePage button:active {
-    background-color: #262626;
 }
 
 .cards {
@@ -58,6 +57,10 @@
 p {
     margin-top: 1rem;
     font-size: 1.2rem;
+    text-transform: uppercase;
+    user-select: text;
+    font-weight: 600;
+    color: #ddd;
 }
 
 @media (max-width: 700px) {

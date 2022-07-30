@@ -5,6 +5,8 @@ import styles from "./GamePage.module.css";
 import Card from './Card';
 import Footer from './Footer';
 
+import { motion, AnimatePresence } from 'framer-motion';
+
 const cardImages = [
     { "src": "/img/helmet-1.png", matched: false },
     { "src": "/img/potion-1.png", matched: false },
@@ -13,6 +15,18 @@ const cardImages = [
     { "src": "/img/shield-1.png", matched: false },
     { "src": "/img/sword-1.png", matched: false }
 ]
+
+const pageVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { delay: 0.5, duration: 0.4, type: 'tween' } },
+    exit: { opacity: 0, transition: { duration: 0.4, type: 'tween' } }
+};
+
+const cardsVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.4, type: 'tween' } },
+    exit: { opacity: 0, transition: { duration: 0.4, type: 'tween' } }
+};
 
 const GamePage = () => {
 
@@ -70,26 +84,27 @@ const GamePage = () => {
 
     return (
         <>
-            <div className={styles.gamePage}>
+            <motion.div className={styles.gamePage} initial='hidden' animate='visible' exit='exit' variants={pageVariants}>
                 <div className={styles.header}>
-                    <h1>Memory Game</h1>
-                    <button onClick={shuffleCards}>New Game</button>
+                    <h1>memory game</h1>
+                    <motion.button onClick={shuffleCards} whileTap={{ scale: 0.9 }}>New Game</motion.button>
                     <p>Turns: {turns}</p>
                 </div>
-
-                <div className={styles.cards}>
-                        {cards.map(item => 
-                        <Card 
-                            key={item.id} 
-                            data={item} 
-                            choiceHandler={choiceHandler} 
-                            flipped={item === choiceOne || item === choiceTwo || item.matched}
-                            disabled={disabled}
-                        />)}
-                </div>
                 
-                <Footer />
-            </div>
+                <motion.div key="card" className={styles.cards} variants={cardsVariants}>
+                    {
+                        cards.map(item => 
+                            <Card 
+                                key={item.id} 
+                                data={item} 
+                                choiceHandler={choiceHandler} 
+                                flipped={item === choiceOne || item === choiceTwo || item.matched}
+                                disabled={disabled}
+                            />
+                        )
+                    }
+                </motion.div>
+            </motion.div>
         </>
     );
 };
