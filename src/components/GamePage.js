@@ -133,7 +133,7 @@ const GamePage = () => {
                         &&
                         <motion.div key="123" className={styles.popupPage} initial='hidden' animate='visible' exit='exit' variants={popupPageVariants}>
                             <motion.div className={styles.popup} variants={popupVariants}>
-                                <p>congratulation, you've finished the game.</p>
+                                <p>congratulation, you've finished the game in {turns} turns.</p>
                                 <div className={styles.popupButtons}>
                                     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={shuffleCards}>want to try again?</motion.div>
                                     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => setShpwPopUp}>close the tab</motion.div>
