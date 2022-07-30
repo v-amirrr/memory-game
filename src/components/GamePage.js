@@ -22,10 +22,16 @@ const pageVariants = {
     exit: { opacity: 0, transition: { duration: 0.4, type: 'tween' } }
 };
 
-const cardsVariants = {
+const popupPageVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.4, type: 'tween' } },
-    exit: { opacity: 0, transition: { duration: 0.4, type: 'tween' } }
+    visible: { opacity: 1, transition: { duration: 0.4, type: 'tween', when: "beforeChildren" } },
+    exit: { opacity: 0, transition: { duration: 0.4, type: 'tween', when: "afterChildren" } }
+};
+
+const popupVariants = {
+    hidden: { opacity: 0, scale: 0.8, y: -20 },
+    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.4, type: 'tween' } },
+    exit: { opacity: 0, scale: 0.8, y: 20, transition: { duration: 0.4, type: 'tween' } }
 };
 
 const GamePage = () => {
@@ -35,8 +41,11 @@ const GamePage = () => {
     const [choiceOne, setChoiceOne] = useState(null);
     const [choiceTwo, setChoiceTwo] = useState(null);
     const [disabled, setDisabled] = useState(false);
+    const [showPopUp, setShpwPopUp] = useState(false);
 
     const shuffleCards = () => {
+        setShpwPopUp(false);
+        
         const shuffledCards = [...cardImages, ...cardImages]
             .sort(() => Math.random() - 0.5)
             .map(card => ({ ...card, id: Math.random() }));
@@ -82,6 +91,19 @@ const GamePage = () => {
         setDisabled(false);
     }
 
+    useEffect(() => {
+        let matched = [];
+        cards.map(card => {
+            if (card.matched === true) {
+                matched = [...matched, true];
+            }
+        });
+        
+        if (matched.length === 12) {
+            setShpwPopUp(true);
+        }
+    }, [cards]);
+
     return (
         <>
             <motion.div className={styles.gamePage} initial='hidden' animate='visible' exit='exit' variants={pageVariants}>
@@ -91,20 +113,39 @@ const GamePage = () => {
                     <p>Turns: {turns}</p>
                 </div>
                 
-                <motion.div key="card" className={styles.cards} variants={cardsVariants}>
+                <motion.div className={styles.cards}>
                     {
                         cards.map(item => 
-                            <Card 
-                                key={item.id} 
-                                data={item} 
-                                choiceHandler={choiceHandler} 
-                                flipped={item === choiceOne || item === choiceTwo || item.matched}
-                                disabled={disabled}
-                            />
+                                <Card 
+                                    key={item.id} 
+                                    data={item} 
+                                    choiceHandler={choiceHandler} 
+                                    flipped={item === choiceOne || item === choiceTwo || item.matched}
+                                    disabled={disabled}
+                                />
                         )
                     }
                 </motion.div>
+
+                <AnimatePresence>
+                    {
+                        showPopUp
+                        &&
+                        <motion.div key="123" className={styles.popupPage} initial='hidden' animate='visible' exit='exit' variants={popupPageVariants}>
+                            <motion.div className={styles.popup} variants={popupVariants}>
+                                <p>congratulation, you've finished the game.</p>
+                                <div className={styles.popupButtons}>
+                                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={shuffleCards}>want to try again?</motion.div>
+                                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => setShpwPopUp}>close the tab</motion.div>
+                                </div>
+                            </motion.div>
+                        </motion.div>
+                    }
+                </AnimatePresence>
+                
+                <Footer />
             </motion.div>
+
         </>
     );
 };

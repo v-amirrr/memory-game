@@ -7,17 +7,13 @@
     width: 100%;
 }
 
-.footerGitHub {
-    font-size: 2rem;
+.footer p {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    user-select: text;
+    font-weight: 600;
 }
 
 .footer p span {
     color: #ff0000;
 }
-
-/* @media (max-width: 600px) {
-    .footer {
-        position: absolute;
-        bottom: 0;
-    }
-} */

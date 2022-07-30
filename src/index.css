@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500&display=swap');
 
+:root {
+    color-scheme: dark;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -17,6 +21,7 @@
 html {
     font-size: calc(45% + .8vmin);
     overflow-x: hidden;
+    overflow-y: scroll;
     scroll-behavior: smooth;
     user-select: none;
 }
@@ -34,19 +39,43 @@ body {
     color: #00b7ff;
 }
 
-body::-webkit-scrollbar {
-    width: 1rem;
+.link {
+    position: relative;
+    padding: .1rem;
+    color: #00b7ff;
+    z-index: 1;
+    transition: color .2s;
+    -webkit-transition: color .2s;
+    -moz-transition: color .2s;
+    -ms-transition: color .2s;
+    -o-transition: color .2s;
+    width: fit-content;
+    display: inline;
 }
 
-body::-webkit-scrollbar-thumb {
-    background-color: #424242;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+.link::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 92% 0 0 0;
+    background-color: #00b7ff;
+    transition: inset .2s;
+    -webkit-transition: inset .2s;
+    -moz-transition: inset .2s;
+    -ms-transition: inset .2s;
+    -o-transition: inset .2s;
+    border: none;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
 }
 
-body::-webkit-scrollbar-thumb:hover {
-    background-color: #565656;
+.link:hover {
+    color: #000;
+}
+
+.link:hover::after {
+    inset: 0 0 0 0;
 }

@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <>
             <div className={styles.footer}>
-                <p>MADE WITH <span>❤</span> BY <a href='https://github.com/v-amirrr'>ME</a>.</p>
+                <p>Made With <span>❤</span> By <a className='link' target="_blank" href='https://amirvalizadeh.netlify.app/'>ME</a>.</p>
             </div>
         </>
     );
