@@ -136,7 +136,7 @@ const GamePage = () => {
                                 <p>congratulation, you've finished the game in {turns} turns.</p>
                                 <div className={styles.popupButtons}>
                                     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={shuffleCards}>want to try again?</motion.div>
-                                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => setShpwPopUp}>close the tab</motion.div>
+                                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => setShpwPopUp(false)}>close</motion.div>
                                 </div>
                             </motion.div>
                         </motion.div>
